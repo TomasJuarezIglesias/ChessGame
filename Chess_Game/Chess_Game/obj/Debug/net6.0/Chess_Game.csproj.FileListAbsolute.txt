@@ -1,0 +1,15 @@
+C:\Users\Pc\Desktop\Proyectos\C#\ChessGame\Chess_Game\Chess_Game\bin\Debug\net6.0\Chess_Game.exe
+C:\Users\Pc\Desktop\Proyectos\C#\ChessGame\Chess_Game\Chess_Game\bin\Debug\net6.0\Chess_Game.deps.json
+C:\Users\Pc\Desktop\Proyectos\C#\ChessGame\Chess_Game\Chess_Game\bin\Debug\net6.0\Chess_Game.runtimeconfig.json
+C:\Users\Pc\Desktop\Proyectos\C#\ChessGame\Chess_Game\Chess_Game\bin\Debug\net6.0\Chess_Game.dll
+C:\Users\Pc\Desktop\Proyectos\C#\ChessGame\Chess_Game\Chess_Game\bin\Debug\net6.0\Chess_Game.pdb
+C:\Users\Pc\Desktop\Proyectos\C#\ChessGame\Chess_Game\Chess_Game\obj\Debug\net6.0\Chess_Game.csproj.AssemblyReference.cache
+C:\Users\Pc\Desktop\Proyectos\C#\ChessGame\Chess_Game\Chess_Game\obj\Debug\net6.0\Chess_Game.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Pc\Desktop\Proyectos\C#\ChessGame\Chess_Game\Chess_Game\obj\Debug\net6.0\Chess_Game.AssemblyInfoInputs.cache
+C:\Users\Pc\Desktop\Proyectos\C#\ChessGame\Chess_Game\Chess_Game\obj\Debug\net6.0\Chess_Game.AssemblyInfo.cs
+C:\Users\Pc\Desktop\Proyectos\C#\ChessGame\Chess_Game\Chess_Game\obj\Debug\net6.0\Chess_Game.csproj.CoreCompileInputs.cache
+C:\Users\Pc\Desktop\Proyectos\C#\ChessGame\Chess_Game\Chess_Game\obj\Debug\net6.0\Chess_Game.dll
+C:\Users\Pc\Desktop\Proyectos\C#\ChessGame\Chess_Game\Chess_Game\obj\Debug\net6.0\refint\Chess_Game.dll
+C:\Users\Pc\Desktop\Proyectos\C#\ChessGame\Chess_Game\Chess_Game\obj\Debug\net6.0\Chess_Game.pdb
+C:\Users\Pc\Desktop\Proyectos\C#\ChessGame\Chess_Game\Chess_Game\obj\Debug\net6.0\Chess_Game.genruntimeconfig.cache
+C:\Users\Pc\Desktop\Proyectos\C#\ChessGame\Chess_Game\Chess_Game\obj\Debug\net6.0\ref\Chess_Game.dll
