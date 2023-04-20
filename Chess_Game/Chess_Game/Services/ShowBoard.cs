@@ -7,15 +7,16 @@ using System.Threading.Tasks;
 
 namespace Chess_Game.Services
 {
-    public class ShowTable
+    public class ShowBoard
     {
-        public void Show(ChessPieces[,] table)
+        // This method is used to show the board
+        public static void Show(ChessPieces[,] board)
         {
-            foreach (var item in table)
+            foreach (var item in board)
             {
                 bool isNumber = int.TryParse(item.Piece, out int num);
 
-                if (isNumber && int.Parse(item.Piece) != 8 || item.Piece == "=")
+                if (isNumber && int.Parse(item.Piece) != 1 || item.Piece == "=")
                 {
                     Console.WriteLine();
                     Console.WriteLine();
@@ -25,6 +26,8 @@ namespace Chess_Game.Services
 
                 Console.Write(' ');
             }
+            
+            Console.WriteLine();
         }
 
     }

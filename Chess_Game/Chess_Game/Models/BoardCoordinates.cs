@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace Chess_Game.Models
 {
-    public class TableCoordinates : ChessPieces
+    // This class is used to show the coordinates values in the table
+    public class BoardCoordinates : ChessPieces
     {
         public override string? Piece { get; set; }
+        public override bool IsPlayer1 { get; set; }
 
-        public TableCoordinates(string coordinate)
+        public BoardCoordinates(string coordinate)
         {
             Piece = coordinate;
         }
