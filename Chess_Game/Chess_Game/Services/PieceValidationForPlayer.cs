@@ -10,7 +10,7 @@ namespace Chess_Game.Services
     public class PieceValidationForPlayer
     {
         // This method is to know whose piece it is 
-        public static bool Validation(ChessPieces[,] board, Player thePlayer)
+        public static bool Validate(ChessPieces[,] board, Player thePlayer)
         {
             ChessPieces aPiece = board[thePlayer.CurrentPiecePlace[0], thePlayer.CurrentPiecePlace[1]];
 

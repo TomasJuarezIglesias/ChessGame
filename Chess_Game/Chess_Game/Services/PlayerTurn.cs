@@ -9,29 +9,17 @@ namespace Chess_Game.Services
 {
     public class PlayerTurn
     {
+        // Here we will only use the index.
+        bool canContinue = false;
 
+        SelectPiece selectPiece = new();
+        SelectWhereToMove selectWhereToMove = new();
         public ChessPieces[,] StartTurn(ChessPieces[,] actualTable, Player thePlayer)
         {
-            Console.WriteLine("==================");
-            ShowBoard.Show(actualTable);
-            Console.WriteLine("==================");
-            Console.WriteLine("Put X coordinate to select the piece: ");
-            string? responseX = Console.ReadLine();
 
-            Console.WriteLine("Put Y coordinate to select the piece: ");
-            string? responseY = Console.ReadLine();
+            int[] coordinatesPieceSelect = selectPiece.SelectPieceToMove(actualTable, thePlayer);
 
-            // the coordinates of the selected piece are added
-            thePlayer.AddCurrentPiece(int.Parse(responseX), int.Parse(responseY));
-            // validation to see if the piece belongs to the player
-            bool canContinue = PieceValidationForPlayer.Validation(actualTable, thePlayer); 
-
-            if (!canContinue)
-            {
-                return StartTurn(actualTable, thePlayer);
-            }
-
-
+            int[] coordinatesWhereToMove = selectWhereToMove.WhereToMove(actualTable);
 
 
 
