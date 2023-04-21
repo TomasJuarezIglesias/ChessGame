@@ -18,9 +18,9 @@ namespace Chess_Game.Models
             NumPlayer = numPlayer;
         }
 
-        public void AddCurrentPiece(int x, int y)
+        public void AddCurrentPiece(int y, int x)
         {
-            CurrentPiecePlace[0] = y - 1;
+            CurrentPiecePlace[0] = y;
             CurrentPiecePlace[1] = x;
         }
 

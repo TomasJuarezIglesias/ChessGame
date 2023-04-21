@@ -15,7 +15,7 @@ namespace Chess_Game.Services
         {
             Input_VerificationValues input = new();
             string text = "the piece";
-            int[] coordinates = input.InputVerificationOfValues(actualTable, text);
+            int[] coordinates = input.InputVerificationOfValues(actualTable, text, thePlayer.NumPlayer.ToString());
 
             // the coordinates of the selected piece are added
             thePlayer.AddCurrentPiece(coordinates[0], coordinates[1]);

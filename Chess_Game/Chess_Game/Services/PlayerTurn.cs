@@ -9,19 +9,25 @@ namespace Chess_Game.Services
 {
     public class PlayerTurn
     {
-        // Here we will only use the index.
-        bool canContinue = false;
+        // Here we have the call to methods to carry out the respective processes of each player's turn
 
         SelectPiece selectPiece = new();
         SelectWhereToMove selectWhereToMove = new();
+        MovePiece movePiece = new();
         public ChessPieces[,] StartTurn(ChessPieces[,] actualTable, Player thePlayer)
         {
-
+            // Here I obtain the coordinates of the piece selected by the player.
             int[] coordinatesPieceSelect = selectPiece.SelectPieceToMove(actualTable, thePlayer);
+            // Here I obtain where the player wants to move that piece.
+            int[] coordinatesWhereToMove = selectWhereToMove.WhereToMove(actualTable, thePlayer.NumPlayer.ToString());
+            // Here the movement of the piece is made and if it captures any piece from the opposite team.
+            var movement = movePiece.Move(coordinatesPieceSelect, coordinatesWhereToMove, actualTable);
+            if(movement == null)
+            {
+                return StartTurn(actualTable, thePlayer);
+            }
 
-            int[] coordinatesWhereToMove = selectWhereToMove.WhereToMove(actualTable);
-
-
+            actualTable = movement;
 
             return actualTable;
         }

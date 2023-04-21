@@ -12,9 +12,10 @@ namespace Chess_Game.Services
 
         // Reusable method for taking data during the player's turn
         bool canContinue = false;
-        public int[] InputVerificationOfValues(ChessPieces[,] actualTable, string txt)
+        public int[] InputVerificationOfValues(ChessPieces[,] actualTable, string txt, string playerTurn)
         {
             Console.Clear();
+            Console.WriteLine($"It is player {playerTurn} turn");
             Console.WriteLine("==================");
             ShowBoard.Show(actualTable);
             Console.WriteLine("==================");
@@ -25,7 +26,7 @@ namespace Chess_Game.Services
             canContinue = LetterValidation.Validate(responseX);
             if (!canContinue)
             {
-                return InputVerificationOfValues(actualTable,txt);
+                return InputVerificationOfValues(actualTable,txt, playerTurn);
             }
 
             responseX = ConvertLetterToNumber.ConvertLetter(responseX);
@@ -36,11 +37,11 @@ namespace Chess_Game.Services
             canContinue = NumberValidation.Validate(responseY);
             if (!canContinue)
             {
-                return InputVerificationOfValues(actualTable,txt);
+                return InputVerificationOfValues(actualTable,txt, playerTurn);
             }
 
 
-            int[] coordinates = { int.Parse(responseX), int.Parse(responseY) };
+            int[] coordinates = {  int.Parse(responseY) - 1, int.Parse(responseX)};
             return coordinates;
         }
 

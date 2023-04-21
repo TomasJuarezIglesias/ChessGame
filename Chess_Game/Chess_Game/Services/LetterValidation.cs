@@ -17,6 +17,7 @@ namespace Chess_Game.Services
             {
                 Console.Clear();
                 Console.WriteLine("Invalid coordinate");
+                Thread.Sleep(1000);
                 return false; 
             }
 
@@ -28,6 +29,7 @@ namespace Chess_Game.Services
 
             Console.Clear();
             Console.WriteLine("Invalid coordinate");
+            Thread.Sleep(1000);
             return false;
 
         }

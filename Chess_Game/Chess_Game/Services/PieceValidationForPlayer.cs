@@ -14,7 +14,7 @@ namespace Chess_Game.Services
         {
             ChessPieces aPiece = board[thePlayer.CurrentPiecePlace[0], thePlayer.CurrentPiecePlace[1]];
 
-            if(aPiece.GetType() == typeof(EmptySpace) || aPiece.GetType() == typeof(EmptySpace)) 
+            if(aPiece.GetType() == typeof(EmptySpace) || aPiece.GetType() == typeof(BoardCoordinates)) 
             {
                 Console.Clear();
                 Console.WriteLine("You have selected a wrong piece");
