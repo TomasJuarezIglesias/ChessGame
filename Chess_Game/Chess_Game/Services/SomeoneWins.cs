@@ -9,7 +9,7 @@ namespace Chess_Game.Services
 {
     public class SomeoneWins
     {
-        public bool IteratePieces(ChessPieces[,] actualTable)
+        public bool IteratePieces(IPiece[,] actualTable)
         {
             int counter = 0;
             foreach (var piece in actualTable)

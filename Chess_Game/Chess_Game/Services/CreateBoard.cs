@@ -10,9 +10,9 @@ namespace Chess_Game.Services
     public class CreateBoard
     {
         // here the board is created to start the game
-        public ChessPieces[,] Create()
+        public IPiece[,] Create()
         {
-            ChessPieces[,] table =
+            IPiece[,] table =
             {
                 { new BoardCoordinates("1"), new Tower(true), new Horse(true), new Bishop(true), new Queen(true), new King(true), new Bishop(true), new Horse(true), new Tower(true) },
                 { new BoardCoordinates("2"), new Pawn(true), new Pawn(true) , new Pawn(true), new Pawn(true), new Pawn(true), new Pawn(true), new Pawn(true), new Pawn(true) },

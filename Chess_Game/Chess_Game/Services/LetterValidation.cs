@@ -24,7 +24,7 @@ namespace Chess_Game.Services
             
             foreach (var item in words)
             {
-                if (item.ToLower() == response.ToLower()) { return true; }
+                if (item.ToLower() == response.ToLower()) return true; 
             }
 
             Console.Clear();

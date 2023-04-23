@@ -11,7 +11,7 @@ namespace Chess_Game.Services
     {
         // Method for selecting a piece by coordinates.
         bool canContinue = false;
-        public int[] SelectPieceToMove(ChessPieces[,] actualTable, Player thePlayer)
+        public int[] SelectPieceToMove(IPiece[,] actualTable, Player thePlayer)
         {
             Input_VerificationValues input = new();
             string text = "the piece";
@@ -22,12 +22,8 @@ namespace Chess_Game.Services
             // validation to see if the piece belongs to the player
             canContinue = PieceValidationForPlayer.Validate(actualTable, thePlayer);
 
-            if (!canContinue)
-            {
-                return SelectPieceToMove(actualTable, thePlayer);
-            }
+            if (!canContinue) return SelectPieceToMove(actualTable, thePlayer);
 
-            
             return coordinates; 
         }
 

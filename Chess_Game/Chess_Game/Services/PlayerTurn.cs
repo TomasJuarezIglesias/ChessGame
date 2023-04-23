@@ -14,7 +14,7 @@ namespace Chess_Game.Services
         SelectPiece selectPiece = new();
         SelectWhereToMove selectWhereToMove = new();
         MovePiece movePiece = new();
-        public ChessPieces[,] StartTurn(ChessPieces[,] actualTable, Player thePlayer)
+        public IPiece[,] StartTurn(IPiece[,] actualTable, Player thePlayer)
         {
             // Here I obtain the coordinates of the piece selected by the player.
             int[] coordinatesPieceSelect = selectPiece.SelectPieceToMove(actualTable, thePlayer);
@@ -22,10 +22,8 @@ namespace Chess_Game.Services
             int[] coordinatesWhereToMove = selectWhereToMove.WhereToMove(actualTable, thePlayer.NumPlayer.ToString());
             // Here the movement of the piece is made and if it captures any piece from the opposite team.
             var movement = movePiece.Move(coordinatesPieceSelect, coordinatesWhereToMove, actualTable);
-            if(movement == null)
-            {
-                return StartTurn(actualTable, thePlayer);
-            }
+
+            if(movement == null) return StartTurn(actualTable, thePlayer);
 
             actualTable = movement;
 

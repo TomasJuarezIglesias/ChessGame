@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Chess_Game.Models
 {
-    public class Bishop : ChessPieces, IPiece
+    public class Bishop : IPiece
     {
-        public override string? Piece { get; set; } = "\u2657";
+        public  string? Piece { get; set; } = "\u2657";
 
         // if it changes color to white it is because it belongs to another player
-        public override bool IsPlayer1 { get; set; } = true;
+        public  bool IsPlayer1 { get; set; } = true;
 
         public Bishop(bool isBlack) 
         {
@@ -32,10 +32,9 @@ namespace Chess_Game.Models
             return 2;
         }
 
-        public void Move()
+        public bool Move(int[] pieceSelect, int[] whereToMove, IPiece[,] actualTable)
         {
             throw new NotImplementedException();
         }
-
     }
 }

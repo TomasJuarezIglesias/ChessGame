@@ -10,14 +10,15 @@ namespace Chess_Game.Services
     public class PieceValidationForPlayer
     {
         // This method is to know whose piece it is 
-        public static bool Validate(ChessPieces[,] board, Player thePlayer)
+        public static bool Validate(IPiece[,] board, Player thePlayer)
         {
-            ChessPieces aPiece = board[thePlayer.CurrentPiecePlace[0], thePlayer.CurrentPiecePlace[1]];
+            IPiece aPiece = board[thePlayer.CurrentPiecePlace[0], thePlayer.CurrentPiecePlace[1]];
 
             if(aPiece.GetType() == typeof(EmptySpace) || aPiece.GetType() == typeof(BoardCoordinates)) 
             {
                 Console.Clear();
                 Console.WriteLine("You have selected a wrong piece");
+                Thread.Sleep(1000);
                 return false;
             }
 
@@ -25,6 +26,7 @@ namespace Chess_Game.Services
             {
                 Console.Clear();
                 Console.WriteLine("You have selected a wrong piece");
+                Thread.Sleep(1000);
                 return false;
             }
 

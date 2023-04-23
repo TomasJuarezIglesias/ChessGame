@@ -10,7 +10,7 @@ namespace Chess_Game.Services
     public class SelectWhereToMove
     {
         // Here the destination for the movement is selected
-        public int[] WhereToMove(ChessPieces[,] actualTable, string playerTurn)
+        public int[] WhereToMove(IPiece[,] actualTable, string playerTurn)
         {
             Input_VerificationValues input = new();
             string text = "where to move";

@@ -9,16 +9,28 @@ namespace Chess_Game.Services
 {
     public class MovePiece
     {
-        public ChessPieces[,]? Move(int[] pieceSelect, int[] whereToMove, ChessPieces[,] actualTable)
+        public IPiece[,]? Move(int[] pieceSelect, int[] whereToMove, IPiece[,] actualTable)
         {
+            bool canContinue = actualTable[pieceSelect[0], pieceSelect[1]].Move(pieceSelect, whereToMove, actualTable);
+            if(!canContinue) 
+            {
+                Console.Clear();
+                Console.WriteLine("You cannot make this move!!!");
+                Thread.Sleep(2000);
+                return null;
+            }
+
+
             // Checking if it belongs to the same team
-            if (actualTable[whereToMove[0], whereToMove[1]].IsPlayer1 == actualTable[pieceSelect[0], pieceSelect[1]].IsPlayer1)
+            if (actualTable[whereToMove[0], whereToMove[1]].IsPlayer1 == actualTable[pieceSelect[0], pieceSelect[1]].IsPlayer1 && actualTable[whereToMove[0], whereToMove[1]].GetType() != typeof(EmptySpace))
             {
                 Console.Clear();
                 Console.WriteLine("The piece you want to eliminate belongs to your own team.!!");
                 Thread.Sleep(2000);
                 return null;
             }
+
+            
 
 
             // Here we have the validation if it is a piece of the other player.
@@ -34,7 +46,7 @@ namespace Chess_Game.Services
             }
 
             // Here the exchange of pieces is made
-            ChessPieces temp = actualTable[whereToMove[0], whereToMove[1]];
+            IPiece temp = actualTable[whereToMove[0], whereToMove[1]];
             actualTable[whereToMove[0], whereToMove[1]] = actualTable[pieceSelect[0], pieceSelect[1]];
             actualTable[pieceSelect[0], pieceSelect[1]] = temp;
 

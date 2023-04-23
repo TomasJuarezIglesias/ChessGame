@@ -11,7 +11,7 @@ namespace Chess_Game.Services
     {
         SomeoneWins someoneWins = new();
         SearchWinner searchWinner = new();
-        public bool IsAlive(ChessPieces[,] actualTable)
+        public bool IsAlive(IPiece[,] actualTable)
         {
             // This method looks for if both kings are still alive.
             bool gameOver = someoneWins.IteratePieces(actualTable);

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Chess_Game.Models
 {
-    public class King : ChessPieces , IPiece
+    public class King : IPiece
     {
-        public override string? Piece { get; set; } = "\u2654";
+        public  string? Piece { get; set; } = "\u2654";
         // if it changes color to white it is because it belongs to another player
-        public override bool IsPlayer1 { get; set; } = true;
+        public  bool IsPlayer1 { get; set; } = true;
         public King(bool isBlack)
         {
             if (!isBlack)
@@ -30,8 +30,7 @@ namespace Chess_Game.Models
             return 2;
         }
 
-
-        public void Move()
+        public bool Move(int[] pieceSelect, int[] whereToMove, IPiece[,] actualTable)
         {
             throw new NotImplementedException();
         }

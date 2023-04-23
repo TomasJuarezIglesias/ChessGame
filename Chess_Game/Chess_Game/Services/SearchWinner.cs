@@ -10,7 +10,7 @@ namespace Chess_Game.Services
     public class SearchWinner
     {
 
-        public void Search(ChessPieces[,] actualTable)
+        public void Search(IPiece[,] actualTable)
         {
             Console.Clear();
             foreach (var piece in actualTable)

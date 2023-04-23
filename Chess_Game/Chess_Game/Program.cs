@@ -10,7 +10,7 @@ namespace Chess_Game // Note: actual namespace depends on the project name.
         {
             StartGame newGame = new();
             // Here the table is created, already calling a method to give the game board.
-            ChessPieces[,] actualTable = newGame.Start();
+            IPiece[,] actualTable = newGame.Start();
 
             PlayerTurn playerTurn = new();
             Player player1 = new(1);
@@ -21,15 +21,6 @@ namespace Chess_Game // Note: actual namespace depends on the project name.
 
             while (!gameOver)
             {
-                // here begins the turn of player 1.
-                actualTable = playerTurn.StartTurn(actualTable ,player1);
-
-                // Validation to check if someone has won by check.
-                gameOver = isKingAlive.IsAlive(actualTable);
-                if (gameOver)
-                {
-                    break;
-                }
 
                 // here begins the turn of player 2.
                 actualTable = playerTurn.StartTurn(actualTable ,player2);
@@ -40,6 +31,17 @@ namespace Chess_Game // Note: actual namespace depends on the project name.
                 {
                     break;
                 }
+
+                // here begins the turn of player 1.
+                actualTable = playerTurn.StartTurn(actualTable ,player1);
+
+                // Validation to check if someone has won by check.
+                gameOver = isKingAlive.IsAlive(actualTable);
+                if (gameOver)
+                {
+                    break;
+                }
+
 
             }
 

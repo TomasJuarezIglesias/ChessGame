@@ -12,7 +12,7 @@ namespace Chess_Game.Services
 
         // Reusable method for taking data during the player's turn
         bool canContinue = false;
-        public int[] InputVerificationOfValues(ChessPieces[,] actualTable, string txt, string playerTurn)
+        public int[] InputVerificationOfValues(IPiece[,] actualTable, string txt, string playerTurn)
         {
             Console.Clear();
             Console.WriteLine($"It is player {playerTurn} turn");
@@ -24,10 +24,8 @@ namespace Chess_Game.Services
 
             // Here the input string is validated
             canContinue = LetterValidation.Validate(responseX);
-            if (!canContinue)
-            {
-                return InputVerificationOfValues(actualTable,txt, playerTurn);
-            }
+
+            if (!canContinue)return InputVerificationOfValues(actualTable, txt, playerTurn);
 
             responseX = ConvertLetterToNumber.ConvertLetter(responseX);
             Console.WriteLine($"Enter the Y-coordinate to choose {txt}: ");
@@ -35,11 +33,8 @@ namespace Chess_Game.Services
 
             // Here the int input is validated
             canContinue = NumberValidation.Validate(responseY);
-            if (!canContinue)
-            {
-                return InputVerificationOfValues(actualTable,txt, playerTurn);
-            }
 
+            if (!canContinue) return InputVerificationOfValues(actualTable, txt, playerTurn);
 
             int[] coordinates = {  int.Parse(responseY) - 1, int.Parse(responseX)};
             return coordinates;

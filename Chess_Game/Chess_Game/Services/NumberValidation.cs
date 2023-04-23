@@ -15,15 +15,17 @@ namespace Chess_Game.Services
             {
                 Console.Clear();
                 Console.WriteLine("Invalid coordinate");
+                Thread.Sleep(1000);
                 return false; 
             }
 
-            bool canParse = int.TryParse(response, out int value);
+            bool canParse = int.TryParse(response, out _);
 
             if (!canParse) 
             {
                 Console.Clear();
                 Console.WriteLine("Invalid coordinate");
+                Thread.Sleep(1000);
                 return false; 
             }
 
@@ -31,6 +33,7 @@ namespace Chess_Game.Services
             {
                 Console.Clear();
                 Console.WriteLine("Invalid coordinate");
+                Thread.Sleep(1000);
                 return false;
             }
 

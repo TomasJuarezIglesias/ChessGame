@@ -10,7 +10,7 @@ namespace Chess_Game.Services
     public class ShowBoard
     {
         // This method is used to show the board
-        public static void Show(ChessPieces[,] board)
+        public static void Show(IPiece[,] board)
         {
             foreach (var item in board)
             {

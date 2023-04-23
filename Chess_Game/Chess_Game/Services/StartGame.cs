@@ -10,10 +10,10 @@ namespace Chess_Game.Services
     public class StartGame
     {
         // This method creates the board and displays which player is going to be each one.
-        public ChessPieces[,] Start()
+        public IPiece[,] Start()
         {
             CreateBoard createTable = new();
-            ChessPieces[,] actualTable = createTable.Create();
+            IPiece[,] actualTable = createTable.Create();
 
             Console.WriteLine("Player 1 : Black");
             Console.WriteLine("Player 2 : White");
@@ -21,7 +21,7 @@ namespace Chess_Game.Services
             ShowBoard.Show(actualTable);
             Console.WriteLine("==================");
 
-            Thread.Sleep(2000);
+            Thread.Sleep(5000);
             Console.Clear();
 
             return actualTable;
