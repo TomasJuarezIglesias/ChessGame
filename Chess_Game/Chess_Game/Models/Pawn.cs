@@ -35,104 +35,59 @@ namespace Chess_Game.Models
         // Here we have the validation of the pawn's movement
         public bool Move(int[] pieceSelect, int[] whereToMove, IPiece[,] actualTable)
         {
-            // Variables used to perform the operations
-            int numberOfSquares;
-            int lateralMovements;
+            // Calculations are made for movements
+            int numberOfSquares = whereToMove[0] - pieceSelect[0];
+            int lateralMovements = whereToMove[1] - pieceSelect[1];
             bool canContinue = true;
 
             if (!IsPlayer1)
             {
-
-                // Calculations are made for movements
-                numberOfSquares = pieceSelect[0] - whereToMove[0];
-                lateralMovements = whereToMove[1] - pieceSelect[1];
-
-                // If a movement is made to the right or left, it is checked whether there is any opponent's piece in its upward movement.
-                if (lateralMovements == 1 || lateralMovements == -1)
+                // If a sideways movement is made and one square is advanced, it is verified that it is not an empty space.
+                if (lateralMovements == 1 && numberOfSquares == -1|| lateralMovements == -1 && numberOfSquares == -1)
                 {
-                    for (int i = pieceSelect[0] - 1; i >= whereToMove[0]; i--)
-                    {
-                        // If the upward movement is greater than 1, it is already trapped by this condition.
-                        if (actualTable[i, whereToMove[1]].GetType() == typeof(EmptySpace)) return false;                    
-                    }
+                    if (actualTable[whereToMove[0], whereToMove[1]].GetType() == typeof(EmptySpace)) return false;                    
                     canContinue = false;
                 }
 
                 if (canContinue)
                 {
+                    // Validation if there is a movement backwards or more than allowed. It also checks if there is any movement sideways.
+                    // Indirectly, it also verifies if the lateral movements are more than allowed.
+                    if (numberOfSquares != -2 && numberOfSquares != -1 || lateralMovements != 0) return false;
+
+                    if (numberOfSquares == -2 && !FirstMove) return false;
+
                     // Here we verify if a piece is not an empty space.
                     for (int i = pieceSelect[0] - 1; i >= whereToMove[0]; i--)
                     {
                         if (actualTable[i, pieceSelect[1]].GetType() != typeof(EmptySpace)) return false;
                     }
-
-                    // Validation if there is a movement backwards or more than allowed. It also checks if there is any movement sideways.
-                    if (numberOfSquares != 2 && numberOfSquares != 1 || lateralMovements != 0) return false;
-
-                    if (numberOfSquares == 2 && !FirstMove) return false;
-
-                    FirstMove = false;
-                    return true;
                 }
-
-                // Specific operations are performed again to validate if a diagonal kill is possible.
-                lateralMovements = pieceSelect[1] - whereToMove[1];
-                numberOfSquares = pieceSelect[0] - whereToMove[0];
-
-                // Validation to capture diagonally
-                if (numberOfSquares != 1 || lateralMovements != 1 && lateralMovements != -1) return false;
-                
-                if (actualTable[whereToMove[0], whereToMove[1]].GetType() == typeof(EmptySpace)) return false;
-                
 
                 FirstMove = false;
                 return true;
             }
 
-            // Calculations are made for movements
-            // This is in a different context as other operations are performed to make it easier to understand.
-            numberOfSquares = whereToMove[0] - pieceSelect[0];
-            lateralMovements = whereToMove[1] - pieceSelect[1];
-
-            // If a movement is made to the right or left, it is checked whether there is any opponent's piece in its upward movement.
-            if (lateralMovements == 1 || lateralMovements == -1)
-            {
-                for (int i = pieceSelect[0] + 1; i <= whereToMove[0]; i++)
-                {
-                    // If the upward movement is greater than 1, it is already trapped by this condition.
-                    if (actualTable[i, whereToMove[1]].GetType() == typeof(EmptySpace)) return false;
-
-                }
+            // If a sideways movement is made and one square is advanced, it is verified that it is not an empty space.
+            if (lateralMovements == 1 && numberOfSquares == 1 || lateralMovements == -1 && numberOfSquares == 1)
+            {                
+                if (actualTable[whereToMove[0], whereToMove[1]].GetType() == typeof(EmptySpace)) return false;
                 canContinue = false;
             }
 
-
             if (canContinue)
             {
+                // Validation if there is a movement backwards or more than allowed. It also checks if there is any movement sideways.
+                // Indirectly, it also verifies if the lateral movements are more than allowed.
+                if (numberOfSquares != 2 && numberOfSquares != 1 || lateralMovements != 0)  return false;
+                if (numberOfSquares == 2 && !FirstMove) return false;   
+
                 // Here we verify if a piece is not an empty space.
                 for (int i = pieceSelect[0] + 1; i <= whereToMove[0]; i++)
                 {
                     if (actualTable[i, pieceSelect[1]].GetType() != typeof(EmptySpace)) return false;
                 }
-                // Validation if there is a movement backwards or more than allowed. It also checks if there is any movement sideways.
-                if (numberOfSquares != 2 && numberOfSquares != 1 || lateralMovements != 0)  return false;
-            
-                if (numberOfSquares == 2 && !FirstMove) return false;   
-
-                FirstMove = false;
-                return true;
             }
-
-
-            // Specific operations are performed again to validate if a diagonal kill is possible.
-            lateralMovements = pieceSelect[1] - whereToMove[1];
-            numberOfSquares = whereToMove[0] - pieceSelect[0];
-
-            // Validation to capture diagonally
-            if (numberOfSquares != 1 || lateralMovements != 1 && lateralMovements != -1)return false;
-
-            if (actualTable[whereToMove[0], whereToMove[1]].GetType() == typeof(EmptySpace))return false;
-
             FirstMove = false;
             return true;
         }
