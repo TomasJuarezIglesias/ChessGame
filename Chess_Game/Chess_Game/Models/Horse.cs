@@ -34,7 +34,32 @@ namespace Chess_Game.Models
  
         public bool Move(int[] pieceSelect, int[] whereToMove, IPiece[,] actualTable)
         {
-            throw new NotImplementedException();
+            int numberOfSquares = whereToMove[0] - pieceSelect[0];
+            int lateralMovements = whereToMove[1] - pieceSelect[1];
+            bool movementIsOK = false;
+
+            // Here a first general validation is made.
+            if (numberOfSquares > 2 && numberOfSquares < -2 || lateralMovements > 2 && numberOfSquares < -2) return false;
+
+            // All these validations are for each of the movement possibilities of the horse.
+            if (numberOfSquares == 2 && lateralMovements == 1 || numberOfSquares == 2 && lateralMovements == -1) movementIsOK = true;
+            
+            if (numberOfSquares == -2 && lateralMovements == 1 || numberOfSquares == -2 && lateralMovements == -1) movementIsOK = true;
+
+            if (lateralMovements == 2 && numberOfSquares == 1 || lateralMovements == 2 && numberOfSquares == -1) movementIsOK = true;
+
+            if (lateralMovements == -2 && numberOfSquares == 1 || lateralMovements == -2 && numberOfSquares == -1) movementIsOK = true;
+
+            if (!movementIsOK) return false;
+
+            // This validation is to check if it is a piece of its own team.
+            if (actualTable[pieceSelect[0], pieceSelect[1]].IsPlayer1 == actualTable[whereToMove[0], whereToMove[1]].IsPlayer1 
+                && actualTable[whereToMove[0], whereToMove[1]].GetType() != typeof(EmptySpace))
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
