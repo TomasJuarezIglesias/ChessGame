@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chess_Game.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -33,7 +34,15 @@ namespace Chess_Game.Models
 
         public bool Move(int[] pieceSelect, int[] whereToMove, IPiece[,] actualTable)
         {
-            throw new NotImplementedException();
+            // Two reused methods are called, one for the movement of the tower and another for the bishop.
+            DiagonalMovement diagonalMovement = new();
+            MovementOnXorY movementOnXorY = new();
+
+            bool canMove = movementOnXorY.Movement(pieceSelect, whereToMove, actualTable);
+
+            if (canMove) return true;
+
+            return diagonalMovement.MakeValidaiton(pieceSelect, whereToMove, actualTable);
         }
     }
 }
