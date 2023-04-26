@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chess_Game.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,7 +35,8 @@ namespace Chess_Game.Models
 
         public bool Move(int[] pieceSelect, int[] whereToMove, IPiece[,] actualTable)
         {
-            throw new NotImplementedException();
+            DiagonalMovement move = new();
+            return move.MakeValidaiton(pieceSelect, whereToMove, actualTable);
         }
     }
 }
