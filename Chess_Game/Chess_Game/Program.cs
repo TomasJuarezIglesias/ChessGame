@@ -45,12 +45,7 @@ namespace Chess_Game // Note: actual namespace depends on the project name.
 
             }
 
-
             Console.ReadLine();
-
-
-
-            
         }
     }
 }

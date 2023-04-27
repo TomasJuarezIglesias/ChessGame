@@ -1,20 +1,49 @@
-﻿using Chess_Game.Models;
+﻿using Chess_Game.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Chess_Game.Services
+namespace Chess_Game.Models
 {
-    public class MovementOnXorY
+    public class Rook : IPiece , IVerticalHorizontalMovement
     {
-        public bool Movement(int[] pieceSelect, int[] whereToMove, IPiece[,] actualTable)
+        public  string? Piece { get; set; } = "\u2656";
+
+        // if it changes color to white it is because it belongs to another player
+        public  bool IsPlayer1 { get; set; } = true;
+
+        public Rook(bool isBlack)
+        {
+            if (!isBlack)
+            {
+                Piece = "\u265C";
+                IsPlayer1 = false;
+            }
+        }
+
+        // here returns who owns the instance of the piece 
+        public int Playerpiece()
+        {
+            if (IsPlayer1)
+            {
+                return 1;
+            }
+            return 2;
+        }
+
+        public bool Move(int[] pieceSelect, int[] whereToMove, IPiece[,] actualTable)
+        {
+            return VerticalHorizontalMovement(pieceSelect, whereToMove,actualTable);
+        }
+
+        public bool VerticalHorizontalMovement(int[] pieceSelect, int[] whereToMove, IPiece[,] actualTable)
         {
             int numberOfSquares = whereToMove[0] - pieceSelect[0];
             int lateralMovements = whereToMove[1] - pieceSelect[1];
 
-            // Validation if they try to make movements not allowed by the tower 
+            // Validation if they try to make movements not allowed 
             if (numberOfSquares != 0 && lateralMovements != 0) return false;
 
 
@@ -60,6 +89,5 @@ namespace Chess_Game.Services
             }
             return true;
         }
-
     }
 }

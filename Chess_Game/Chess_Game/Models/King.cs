@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,7 +33,13 @@ namespace Chess_Game.Models
 
         public bool Move(int[] pieceSelect, int[] whereToMove, IPiece[,] actualTable)
         {
-            throw new NotImplementedException();
+            int numberOfSquares = whereToMove[0] - pieceSelect[0];
+            int lateralMovements = whereToMove[1] - pieceSelect[1];
+
+            //Validation for king movement that allows movement in all directions.
+            if (numberOfSquares < -1 || numberOfSquares > 1 || lateralMovements < -1 || lateralMovements > 1) return false; 
+
+            return true;
         }
     }
 }
