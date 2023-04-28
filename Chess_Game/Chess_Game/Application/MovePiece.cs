@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Chess_Game.Services
+namespace Chess_Game.Application
 {
     public class MovePiece
     {
         public IPiece[,]? Move(int[] pieceSelect, int[] whereToMove, IPiece[,] actualTable)
         {
+            // Here, the method for each piece is called to perform the corresponding validation.
             bool canContinue = actualTable[pieceSelect[0], pieceSelect[1]].Move(pieceSelect, whereToMove, actualTable);
             if(!canContinue) 
             {
@@ -29,9 +30,6 @@ namespace Chess_Game.Services
                 Thread.Sleep(2000);
                 return null;
             }
-
-            
-
 
             // Here we have the validation if it is a piece of the other player.
             if (actualTable[whereToMove[0], whereToMove[1]].GetType() != typeof(EmptySpace))

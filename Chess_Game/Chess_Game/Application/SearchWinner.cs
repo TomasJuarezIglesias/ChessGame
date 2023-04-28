@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Chess_Game.Services
+namespace Chess_Game.Application
 {
     public class SearchWinner
     {

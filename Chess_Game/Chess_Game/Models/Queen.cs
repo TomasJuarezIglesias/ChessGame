@@ -1,4 +1,4 @@
-﻿using Chess_Game.Services;
+﻿using Chess_Game.Application;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,14 +12,14 @@ namespace Chess_Game.Models
     {
         public  string? Piece { get; set; } = "\u2655";
         // if it changes color to white it is because it belongs to another player
-        public  bool IsPlayer1 { get; set; } = true;
+        public  bool IsPlayer1 { get; set; } = false;
 
         public Queen(bool isBlack)
         {
             if (!isBlack) 
             {
                 Piece = "\u265B";
-                IsPlayer1 = false;
+                IsPlayer1 = true;
             }
         }
         // here returns who owns the instance of the piece

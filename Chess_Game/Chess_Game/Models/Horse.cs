@@ -11,13 +11,13 @@ namespace Chess_Game.Models
         public  string? Piece { get; set; } = "\u2658";
 
         // if it changes color to white it is because it belongs to another player
-        public bool IsPlayer1 { get; set; } = true;
+        public bool IsPlayer1 { get; set; } = false;
         public Horse(bool isBlack)
         {
             if (!isBlack)
             {
                 Piece = "\u265E";
-                IsPlayer1 = false;
+                IsPlayer1 = true;
             }
         }
 

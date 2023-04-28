@@ -5,15 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Chess_Game.Services
+namespace Chess_Game.Application
 {
     public class SelectPiece
     {
-        // Method for selecting a piece by coordinates.
+        // Method for selecting a piece and where to move by coordinates.
+        public SelectPiece()
+        {
+            input = new();
+        }
+        Input_VerificationValues input;
+   
         bool canContinue = false;
         public int[] SelectPieceToMove(IPiece[,] actualTable, Player thePlayer)
         {
-            Input_VerificationValues input = new();
+            
             string text = "the piece";
             int[] coordinates = input.InputVerificationOfValues(actualTable, text, thePlayer.NumPlayer.ToString());
 
@@ -25,6 +31,15 @@ namespace Chess_Game.Services
             if (!canContinue) return SelectPieceToMove(actualTable, thePlayer);
 
             return coordinates; 
+        }
+
+        public int[] WhereToMove(IPiece[,] actualTable, string playerTurn)
+        {
+            string text = "where to move";
+
+            int[] coordinates = input.InputVerificationOfValues(actualTable, text, playerTurn);
+
+            return coordinates;
         }
 
     }

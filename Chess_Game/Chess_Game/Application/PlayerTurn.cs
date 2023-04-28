@@ -5,21 +5,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Chess_Game.Services
+namespace Chess_Game.Application
 {
     public class PlayerTurn
     {
-        // Here we have the call to methods to carry out the respective processes of each player's turn
+        public PlayerTurn()
+        {
+            selectPiece = new();
+            movePiece = new();
+        }
 
-        SelectPiece selectPiece = new();
-        SelectWhereToMove selectWhereToMove = new();
-        MovePiece movePiece = new();
+        // Here we have the call to methods to carry out the respective processes of each player's turn
+        SelectPiece selectPiece;
+        MovePiece movePiece;
+
         public IPiece[,] StartTurn(IPiece[,] actualTable, Player thePlayer)
         {
             // Here I obtain the coordinates of the piece selected by the player.
             int[] coordinatesPieceSelect = selectPiece.SelectPieceToMove(actualTable, thePlayer);
             // Here I obtain where the player wants to move that piece.
-            int[] coordinatesWhereToMove = selectWhereToMove.WhereToMove(actualTable, thePlayer.NumPlayer.ToString());
+            int[] coordinatesWhereToMove = selectPiece.WhereToMove(actualTable, thePlayer.NumPlayer.ToString());
 
             // It validates if the same coordinate has been entered for both, the selected piece and the destination to move.
             if (coordinatesPieceSelect == coordinatesWhereToMove) return StartTurn(actualTable, thePlayer);
