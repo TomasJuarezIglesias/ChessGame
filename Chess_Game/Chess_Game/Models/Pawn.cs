@@ -10,14 +10,14 @@ namespace Chess_Game.Models
     {
         public string? Piece { get; set; } = "\u2659";
         // if it changes color to white it is because it belongs to another player
-        public bool IsPlayer1 { get; set; } = true;
+        public bool IsPlayer1 { get; set; } = false;
         private bool FirstMove = true;
         public Pawn(bool isBlack)
         {
             if (!isBlack)
             {
                 Piece = "\u265F";
-                IsPlayer1 = false;
+                IsPlayer1 = true;
             }
         }
 
@@ -40,7 +40,7 @@ namespace Chess_Game.Models
             int lateralMovements = whereToMove[1] - pieceSelect[1];
             bool canContinue = true;
 
-            if (!IsPlayer1)
+            if (IsPlayer1)
             {
                 // If a sideways movement is made and one square is advanced, it is verified that it is not an empty space.
                 if (lateralMovements == 1 && numberOfSquares == -1|| lateralMovements == -1 && numberOfSquares == -1)

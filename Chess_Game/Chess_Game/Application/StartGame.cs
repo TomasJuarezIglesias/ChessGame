@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Chess_Game.Services
+namespace Chess_Game.Application
 {
-    public class CreateBoard
+    public class StartGame
     {
-        // here the board is created to start the game
-        public IPiece[,] Create()
+        // This method creates the board and displays which player is going to be each one.
+        public static IPiece[,] Start()
         {
             IPiece[,] table =
             {
@@ -23,10 +23,15 @@ namespace Chess_Game.Services
                 { new BoardCoordinates("7"), new Pawn(false), new Pawn(false) , new Pawn(false), new Pawn(false), new Pawn(false), new Pawn(false), new Pawn(false), new Pawn(false) },
                 { new BoardCoordinates("8"), new Rook(false), new Horse(false), new Bishop(false), new Queen(false), new King(false), new Bishop(false), new Horse(false), new Rook(false) },
                 { new BoardCoordinates("="), new BoardCoordinates("A"), new BoardCoordinates("B"), new BoardCoordinates("C"), new BoardCoordinates("D"), new BoardCoordinates("E"), new BoardCoordinates("F"), new BoardCoordinates("G"), new BoardCoordinates("H") },
-
-
             };
+            Console.WriteLine("Player 1 : White");
+            Console.WriteLine("Player 2 : Black");
+            Console.WriteLine("==================");
+            ShowBoard.Show(table);
+            Console.WriteLine("==================");
 
+            Thread.Sleep(5000);
+            Console.Clear();
 
             return table;
         }
