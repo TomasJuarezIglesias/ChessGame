@@ -9,24 +9,55 @@ namespace Chess_Game.Application
 {
     public class IsKingAlive
     {
-        public IsKingAlive()
-        {
-            someoneWins = new();
-            searchWinner = new();
-        }
-        SomeoneWins someoneWins;
-        SearchWinner searchWinner;
 
         public bool IsAlive(IPiece[,] actualTable)
         {
             // This method looks for if both kings are still alive.
-            bool gameOver = someoneWins.IteratePieces(actualTable);
+            bool gameOver = IteratePieces(actualTable);
 
             if (!gameOver) return false;
 
             // This method looks for the winner through the ownership property if it belongs to a certain player.
-            searchWinner.Search(actualTable);
+            Search(actualTable);
             return true;
         }
+
+        public bool IteratePieces(IPiece[,] actualTable)
+        {
+            int counter = 0;
+            foreach (var piece in actualTable)
+            {
+                if (piece.GetType() == typeof(King))
+                {
+                    counter++;
+                };
+            }
+
+            if (counter != 2)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public void Search(IPiece[,] actualTable)
+        {
+            Console.Clear();
+            foreach (var piece in actualTable)
+            {
+                if (piece.GetType() == typeof(King))
+                {
+                    if (!piece.IsPlayer1)
+                    {
+                        Console.WriteLine("Player number 2 wins");
+                        break;
+                    }
+                    Console.WriteLine("Player number 1 wins");
+                    break;
+                }
+            }
+        }
+
     }
 }
